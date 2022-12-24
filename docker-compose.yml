@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: postgres:14.2
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: realtor-app
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    command: postgres -c listen_addresses='*'
