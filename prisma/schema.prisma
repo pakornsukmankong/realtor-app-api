@@ -27,7 +27,7 @@ model User {
 model Home {
   id                  Int       @id @default(autoincrement())
   address             String     
-  number_of_bedroom   Int
+  number_of_bedrooms  Int
   number_of_bathrooms Float
   city                String
   listed_date         DateTime  @default(now())
@@ -36,7 +36,7 @@ model Home {
   propertyType        PropertyType   
   created_at          DateTime  @default(now())
   updated_at          DateTime  @updatedAt
-  Images              Image[]
+  images              Image[]
   realtor_id          Int
   realtor             User @relation(fields: [realtor_id], references: [id])
   message             Message[]
