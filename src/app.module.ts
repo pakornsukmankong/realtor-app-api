@@ -1,4 +1,4 @@
-import { ClassSerializerInterceptor, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthController } from './user/auth/auth.controller';
@@ -8,6 +8,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { HomeController } from './home/home.controller';
 import { HomeService } from './home/home.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { UserInterceptor } from './user/interceptors/user.interceptor';
 
 @Module({
   imports: [UserModule, PrismaModule],
@@ -16,7 +17,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     AppService,
     AuthService,
     HomeService,
-    { provide: APP_INTERCEPTOR, useClass: ClassSerializerInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: UserInterceptor },
   ],
 })
 export class AppModule {}
