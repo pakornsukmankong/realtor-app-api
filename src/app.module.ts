@@ -7,8 +7,9 @@ import { UserModule } from './user/user.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { HomeController } from './home/home.controller';
 import { HomeService } from './home/home.service';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { UserInterceptor } from './user/interceptors/user.interceptor';
+import { AuthGuard } from './guards/auth.guard';
 
 @Module({
   imports: [UserModule, PrismaModule],
@@ -18,6 +19,7 @@ import { UserInterceptor } from './user/interceptors/user.interceptor';
     AuthService,
     HomeService,
     { provide: APP_INTERCEPTOR, useClass: UserInterceptor },
+    { provide: APP_GUARD, useClass: AuthGuard },
   ],
 })
 export class AppModule {}
