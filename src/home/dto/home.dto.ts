@@ -15,43 +15,23 @@ export class HomesResponseDto {
   id: number;
   address: string;
 
-  @Exclude()
+  @Expose({ name: 'numberOfBedrooms' })
   number_of_bedrooms: number;
 
-  @Expose({ name: 'numberOfBedrooms' })
-  numberOfBedrooms() {
-    return this.number_of_bedrooms;
-  }
-
-  @Exclude()
-  number_of_bathrooms: number;
-
   @Expose({ name: 'numberOfBathrooms' })
-  numberOfBathrooms() {
-    return this.number_of_bathrooms;
-  }
+  number_of_bathrooms: number;
 
   city: string;
 
-  @Exclude()
-  listed_date: Date;
-
   @Expose({ name: 'listedDate' })
-  listedDate() {
-    return this.listed_date;
-  }
+  listed_date: Date;
 
   price: number;
 
   image: string;
 
-  @Exclude()
-  land_size: number;
-
   @Expose({ name: 'landSize' })
-  landSize() {
-    return this.land_size;
-  }
+  land_size: number;
 
   propertyType: PropertyType;
 

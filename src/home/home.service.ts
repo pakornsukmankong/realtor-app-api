@@ -8,7 +8,7 @@ import {
   UpdateHomeParams,
 } from './interface/home.interface';
 
-const homeSelect = {
+export const homeSelect = {
   id: true,
   address: true,
   city: true,
@@ -38,7 +38,6 @@ export class HomeService {
     if (!homes.length) {
       throw new NotFoundException('Home Not Found');
     }
-
     return homes.map((home) => {
       const fetchHome = { ...home, image: home.images[0].url };
       delete fetchHome.images;
